@@ -1,14 +1,10 @@
 # ActiveAdmin::Globalize
 Makes it easy to translate your resource fields.
 
-### :warning: Unmaintained :warning:
-
-Sorry, but I no longer work on ActiveAdmin often enough to justify mantaining this gem. Take it as it is. If you are interested to update and maintain the gem, please let me know! :heart:
-
 ## Installation
 
 ```ruby
-gem "activeadmin-globalize", github: 'stefanoverna/activeadmin-globalize',
+gem "activeadmin-globalize", github: 'CentralMarin/activeadmin-globalize',
 branch: 'master'
 ```
 We still need to use GitHub because ActiveAdmin is still in active development
@@ -36,10 +32,12 @@ index do
 end
 
 form do |f|
-  # ...
-  f.translated_inputs "Translated fields", switch_locale: false do |t|
-    t.input :title
-    t.input :content
+  f.inputs do # Must have at least one
+    # ...
+    f.translated_inputs "Translated fields", switch_locale: false do |t|
+      t.input :title
+      t.input :content
+    end
   end
   # ...
 end
