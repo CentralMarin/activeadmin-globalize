@@ -7,7 +7,8 @@ module ActiveAdmin
         options.symbolize_keys!
         switch_locale = options.fetch(:switch_locale, false)
         auto_sort = options.fetch(:auto_sort, true)
-        form_buffers.last << template.content_tag(:div, class: "activeadmin-translations") do
+        html = "".html_safe
+        html << template.content_tag(:div, class: "activeadmin-translations") do
           template.content_tag(:ul, class: "available-locales") do
             (auto_sort ? I18n.available_locales.sort : I18n.available_locales).map do |locale|
               template.content_tag(:li) do
@@ -34,6 +35,7 @@ module ActiveAdmin
             )
           end.join.html_safe
         end
+        return html
       end
 
       module ClassMethods
